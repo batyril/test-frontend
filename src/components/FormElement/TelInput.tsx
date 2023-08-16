@@ -36,7 +36,9 @@ const TelInput: FC<ITelInput> = ({ errors, dirtyFields, register }) => {
         type='number'
       />
       <div className={styles.form__placeholder}>Номер телефона</div>
-      <div>{errors?.telephone && <p>{errors?.telephone?.message} </p>}</div>
+      <div className={styles.form__error}>
+        {errors?.telephone && <p>{errors?.telephone?.message} </p>}
+      </div>
     </div>
   );
 };

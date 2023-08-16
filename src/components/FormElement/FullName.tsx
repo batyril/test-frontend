@@ -68,7 +68,9 @@ const FullName: FC<IFullName> = ({
         </ul>
       ) : null}
 
-      <div>{errors?.fullName && <p>{errors?.fullName?.message} </p>}</div>
+      <div className={styles.form__error}>
+        {errors?.fullName && <p>{errors?.fullName?.message} </p>}
+      </div>
     </label>
   );
 };

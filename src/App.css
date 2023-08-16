@@ -4,6 +4,7 @@
   padding: 0;
   text-align: center;
   box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 
 .logo {
@@ -42,54 +43,5 @@
   color: #888;
 }
 
-.form{
-    display: flex;
-    flex-direction: column;
-    gap: 15px
-}
 
-.form__wrapper{
-    width: 350px;
-    position: relative;
-}
 
-.form__input{
-    width: 100%;
-    border: 0;
-    padding: 10px 0;
-    outline: none;
-    border-radius: 0;
-    font-size: 20px;
-    border-bottom: 1px solid darkgrey;
-    transition: border-color .3s ;
-}
-
-.form__input:focus{
-    border-color:#3d61ef;
-}
-
-.form__placeholder{
-    pointer-events: none;
-    display: block;
-    font-size: 20px;
-    position: absolute;
-    left: 0;
-    top: 10px;
-    color: darkgrey;
-    transform-origin: left;
-    transition: top .3s, transform .3s, color .3s ;
-}
-
-.form__input:focus+.form__placeholder
-{
-    top: -15px;
-    transform: scale(.85);
-    color: #3d61ef;
-}
-
-.form__input.changed+.form__placeholder
-{
-    top: -15px;
-    transform: scale(.85);
-    color: #3d61ef;
-}
