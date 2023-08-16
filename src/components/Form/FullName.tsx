@@ -41,6 +41,7 @@ const FullName: FC<IFullName> = ({
   return (
     <label className={styles.form__wrapper}>
       <input
+        autoComplete='off'
         onClick={() => {
           setIsOpen(true);
         }}
@@ -49,7 +50,7 @@ const FullName: FC<IFullName> = ({
           minLength: { value: 4, message: 'Слишком короткое сообщение ' },
         })}
         className={`${styles.form__input} ${
-          dirtyFields.fullName ? 'changed' : ''
+          dirtyFields.fullName ? styles.changed : ''
         }`}
       />
       <div className={styles.form__placeholder}>ФИО</div>

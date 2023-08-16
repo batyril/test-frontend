@@ -5,6 +5,7 @@ import {
 } from 'react-hook-form';
 import { FC } from 'react';
 import { Form } from '../../const/interfaces.ts';
+import styles from './Form.module.scss';
 
 interface IGenderInput {
   register: UseFormRegister<Form>;
@@ -13,12 +14,14 @@ interface IGenderInput {
 }
 const GenderInput: FC<IGenderInput> = ({ dirtyFields, register, errors }) => {
   return (
-    <label className='form__wrapper'>
+    <label className={styles.form__wrapper}>
       <input
-        className={`form__input ${dirtyFields.gender ? 'changed' : ''}`}
+        className={`${styles.form__input} ${
+          dirtyFields.gender ? styles.changed : ''
+        }`}
         {...register('gender')}
       />
-      <div className='form__placeholder'>Пол</div>
+      <div className={styles.form__placeholder}>Пол</div>
       <div>{errors?.gender && <p>{errors?.gender?.message} </p>}</div>
     </label>
   );

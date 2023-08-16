@@ -58,7 +58,7 @@ function App() {
           errors={errors}
         />
 
-        <ClientGroupSelect dirtyFields={dirtyFields} register={register} />
+        <ClientGroupSelect register={register} />
 
         <DoctorSelect dirtyFields={dirtyFields} register={register} />
 

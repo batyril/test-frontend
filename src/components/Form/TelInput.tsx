@@ -5,6 +5,7 @@ import {
 } from 'react-hook-form';
 import { FC } from 'react';
 import { Form } from '../../const/interfaces.ts';
+import styles from './Form.module.scss';
 
 interface ITelInput {
   register: UseFormRegister<Form>;
@@ -23,16 +24,18 @@ const TelInput: FC<ITelInput> = ({ errors, dirtyFields, register }) => {
     return true;
   };
   return (
-    <div className='form__wrapper'>
+    <div className={styles.form__wrapper}>
       <input
-        className={`form__input ${dirtyFields.telephone ? 'changed' : ''}`}
+        className={`${styles.form__input} ${
+          dirtyFields.telephone ? styles.changed : ''
+        }`}
         {...register('telephone', {
           required: 'Поле обязательное ',
           validate: validateTelephone,
         })}
         type='number'
       />
-      <div className='form__placeholder'>Номер телефона</div>
+      <div className={styles.form__placeholder}>Номер телефона</div>
       <div>{errors?.telephone && <p>{errors?.telephone?.message} </p>}</div>
     </div>
   );

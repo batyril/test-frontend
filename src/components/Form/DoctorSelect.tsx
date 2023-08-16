@@ -1,6 +1,7 @@
 import { FieldNamesMarkedBoolean, UseFormRegister } from 'react-hook-form';
 import { FC } from 'react';
 import { Form } from '../../const/interfaces.ts';
+import styles from './Form.module.scss';
 
 interface IDoctorSelect {
   register: UseFormRegister<Form>;
@@ -9,9 +10,11 @@ interface IDoctorSelect {
 
 const DoctorSelect: FC<IDoctorSelect> = ({ dirtyFields, register }) => {
   return (
-    <label className='form__wrapper'>
+    <label className={styles.form__wrapper}>
       <select
-        className={`form__input ${dirtyFields.doctor ? 'changed' : ''}`}
+        className={`${styles.form__input} ${
+          dirtyFields.doctor ? styles.changed : ''
+        }`}
         {...register('doctor', { required: true })}
       >
         <option value='' disabled></option>
@@ -19,7 +22,7 @@ const DoctorSelect: FC<IDoctorSelect> = ({ dirtyFields, register }) => {
         <option value='Захаров'>Захаров</option>
         <option value='Черниговская'>Черниговская</option>
       </select>
-      <div className='form__placeholder'> Лечащий врач</div>
+      <div className={styles.form__placeholder}> Лечащий врач</div>
     </label>
   );
 };

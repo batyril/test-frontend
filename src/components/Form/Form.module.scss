@@ -2,7 +2,15 @@
   &__wrapper{
     width: 350px;
     position: relative;
+
   }
+
+  &__title{
+    margin: 0;
+    text-align: left;
+  }
+
+
 
   &__input{
     width: 100%;
@@ -17,6 +25,7 @@
       border-color:#3d61ef;
     }
   }
+
 
   &__placeholder{
     pointer-events: none;
@@ -59,6 +68,12 @@
     transform: scale(.85);
     color: #3d61ef;
   }
+
+  &__wrapper:focus-within &__title
+  {
+     color: #3d61ef;
+  }
+
   &__input.changed+&__placeholder
   {
     top: -15px;

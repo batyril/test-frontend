@@ -1,22 +1,19 @@
-import { FieldNamesMarkedBoolean, UseFormRegister } from 'react-hook-form';
+import { UseFormRegister } from 'react-hook-form';
 import { FC } from 'react';
 import { Form } from '../../const/interfaces.ts';
+import styles from './Form.module.scss';
 
 interface IClientGroupSelect {
   register: UseFormRegister<Form>;
-  dirtyFields: Partial<Readonly<FieldNamesMarkedBoolean<Form>>>;
 }
 
-const ClientGroupSelect: FC<IClientGroupSelect> = ({
-  register,
-  dirtyFields,
-}) => {
+const ClientGroupSelect: FC<IClientGroupSelect> = ({ register }) => {
   return (
-    <label className='form__wrapper'>
-      Группа клиентов
+    <label className={styles.form__wrapper}>
+      <p className={styles.form__title}>Группа клиентов</p>
       <select
         multiple
-        className={`form__input ${dirtyFields.clientGroup ? 'changed' : ''}`}
+        className={`${styles.form__input}`}
         {...register('clientGroup', { required: true })}
       >
         <option value='VIP'>VIP</option>
