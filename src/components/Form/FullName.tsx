@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { requestName } from '../../request.ts';
 import {
   FieldErrors,
@@ -8,7 +8,7 @@ import {
   UseFormWatch,
 } from 'react-hook-form';
 import styles from './Form.module.scss';
-import { Form } from '../../App.tsx';
+import { Form, IHelpName } from '../../const/interfaces.ts';
 
 interface IFullName {
   watch: UseFormWatch<Form>;
@@ -18,13 +18,13 @@ interface IFullName {
   setValue: UseFormSetValue<Form>;
 }
 
-const FullName = ({
+const FullName: FC<IFullName> = ({
   watch,
   register,
   dirtyFields,
   errors,
   setValue,
-}: IFullName) => {
+}) => {
   const [names, setNames] = useState([]);
   const [isOpen, setIsOpen] = useState(true);
   useEffect(() => {
@@ -55,7 +55,7 @@ const FullName = ({
       <div className={styles.form__placeholder}>ФИО</div>
       {names.length > 0 && isOpen ? (
         <ul className={styles.form__helpName}>
-          {names.map((item, index) => (
+          {names.map((item: IHelpName, index) => (
             <li
               onClick={() => handleName(item.value)}
               className={styles.form__helpNameItem}

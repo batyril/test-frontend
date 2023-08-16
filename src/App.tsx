@@ -2,15 +2,12 @@ import './App.css';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import 'react-dadata/dist/react-dadata.css';
 import FullName from './components/Form/FullName.tsx';
-
-export interface Form {
-  fullName: string;
-  date: '';
-  telephone?: number;
-  gender: string;
-  ClientGroup: [];
-  doctor: [];
-}
+import DoctorSelect from './components/Form/DoctorSelect.tsx';
+import ClientGroupSelect from './components/Form/ClientGroupSelect.tsx';
+import TelInput from './components/Form/TelInput.tsx';
+import GenderInput from './components/Form/GenderInput.tsx';
+import DateInput from './components/Form/DateInput.tsx';
+import { Form } from './const/interfaces.ts';
 
 function App() {
   const {
@@ -27,25 +24,13 @@ function App() {
       date: '',
       gender: '',
       doctor: [],
+      clientGroup: [],
     },
   });
 
   const onSubmit: SubmitHandler<Form> = (data) => {
-    console.log(data);
     reset();
   };
-
-  const validateTelephone = (value: number) => {
-    if (!value.startsWith('7')) {
-      return 'Номер телефона должен начинаться с 7';
-    }
-    if (value.length !== 11) {
-      return 'Номер телефона должен содержать 11 цифр';
-    }
-    return true;
-  };
-
-  console.log(watch('fullName'));
 
   return (
     <section className='client'>
@@ -59,65 +44,23 @@ function App() {
           setValue={setValue}
         />
 
-        <label>
-          Дата рождения
-          <input
-            className='form__input'
-            type='date'
-            {...register('date', {
-              required: 'Поле обязательное ',
-            })}
-          />
-        </label>
+        <DateInput register={register} errors={errors} />
 
-        <div>{errors?.date && <p>{errors?.date?.message} </p>}</div>
-        <div className='form__wrapper'>
-          <input
-            className={`form__input ${dirtyFields.telephone ? 'changed' : ''}`}
-            {...register('telephone', {
-              required: 'Поле обязательное ',
-              validate: validateTelephone,
-            })}
-            type='number'
-          />
-          <div className='form__placeholder'>Номер телефона</div>
-          <div>{errors?.telephone && <p>{errors?.telephone?.message} </p>}</div>
-        </div>
+        <GenderInput
+          register={register}
+          dirtyFields={dirtyFields}
+          errors={errors}
+        />
 
-        <div className='form__wrapper'>
-          <input
-            className={`form__input ${dirtyFields.gender ? 'changed' : ''}`}
-            {...register('gender')}
-          />
-          <div className='form__placeholder'>Пол</div>
-        </div>
+        <TelInput
+          register={register}
+          dirtyFields={dirtyFields}
+          errors={errors}
+        />
 
-        <label className='form__wrapper'>
-          Группа клиентов
-          <select
-            multiple
-            className={`form__input ${dirtyFields.gender ? 'changed' : ''}`}
-            {...register('ClientGroup', { required: true })}
-          >
-            <option value='VIP'>VIP</option>
-            <option value=' Проблемные'> Проблемные</option>
-            <option value=' ОМС'> ОМС</option>
-            <option value=' ДМС'> ДМС</option>
-          </select>
-        </label>
+        <ClientGroupSelect dirtyFields={dirtyFields} register={register} />
 
-        <label className='form__wrapper'>
-          <select
-            className={`form__input ${dirtyFields.doctor ? 'changed' : ''}`}
-            {...register('doctor', { required: true })}
-          >
-            <option value='' disabled></option>
-            <option value='Петров'>Петров</option>
-            <option value='Захаров'>Захаров</option>
-            <option value='Черниговская'>Черниговская</option>
-          </select>
-          <div className='form__placeholder'> Группа клиентов</div>
-        </label>
+        <DoctorSelect dirtyFields={dirtyFields} register={register} />
 
         <button type='reset'>Сбросить </button>
         <button disabled={!isValid} type='submit'>
