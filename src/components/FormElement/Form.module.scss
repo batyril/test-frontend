@@ -46,6 +46,9 @@
     text-align: left;
     color: red;
     font-size: 14px;
+    &-date{
+      top:65px;
+    }
   }
 
   &__helpName{
@@ -63,6 +66,48 @@
     padding-left: 20px;
     border-radius: 5px;
   }
+
+  &__wrapper-checkbox{
+    padding: 10px 10px;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    border-radius: 5px;
+    transition: background-color .3s;
+    &:hover{
+      background-color: rgba(0, 0, 255, 0.12);
+    }
+  }
+
+  &__checbox{
+  position: absolute;
+    appearance: none;
+  }
+  &__customChecbox{
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    border: 1px solid blue;
+    position: relative;
+      display: flex;
+    align-items: center;
+  }
+  &__checkMark{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    max-width: 70%;
+    height: auto;
+    display: none;
+  }
+
+  &__checbox:checked + &__customChecbox &__checkMark{
+    display: block;
+  }
+
 
   &__helpNameItem{
     list-style-type: none;

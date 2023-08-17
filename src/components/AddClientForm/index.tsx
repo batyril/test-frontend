@@ -9,23 +9,27 @@ import { Form } from '../../const/interfaces.ts';
 import styles from './AddClientForm.module.scss';
 import SubmitButton from '../Buttons/SubmitButton.tsx';
 import ResetButton from '../Buttons/ResetButton.tsx';
+import CheckboxSMS from '../FormElement/CheckboxSMS.tsx';
 
 const AddClientForm = () => {
   const {
     register,
     watch,
+    setError,
     setValue,
+
     formState: { errors, isValid, dirtyFields },
     handleSubmit,
     reset,
+    trigger,
   } = useForm<Form>({
     mode: 'onChange',
     defaultValues: {
       fullName: '',
-      date: '',
       gender: '',
       doctor: '',
-      clientGroup: [],
+      clientGroup: 'ОМС',
+      checkbox: false,
     },
   });
 
@@ -58,11 +62,18 @@ const AddClientForm = () => {
           errors={errors}
         />
 
-        <DateInput register={register} errors={errors} />
+        <DateInput
+          watch={watch}
+          setError={setError}
+          trigger={trigger}
+          register={register}
+          errors={errors}
+        />
 
-        <ClientGroupSelect register={register} />
+        <ClientGroupSelect errors={errors} register={register} />
 
         <div className={styles.form__buttons}>
+          <CheckboxSMS register={register} />
           <ResetButton reset={reset} />
           <SubmitButton isValid={isValid} />
         </div>

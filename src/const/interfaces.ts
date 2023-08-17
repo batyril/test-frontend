@@ -6,8 +6,9 @@ export interface IHelpName {
 export interface Form {
   fullName: string;
   date: '';
-  telephone?: number;
+  telephone?: string;
   gender: string;
-  clientGroup: [];
-  doctor: [];
+  clientGroup: string;
+  doctor: string;
+  checkbox: boolean;
 }

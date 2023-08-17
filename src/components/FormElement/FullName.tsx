@@ -29,7 +29,7 @@ const FullName: FC<IFullName> = ({
   const [isOpen, setIsOpen] = useState(true);
   useEffect(() => {
     requestName(watch('fullName')).then((res) =>
-      setNames(res.suggestions.slice(5)),
+      setNames(res.suggestions.slice(6)),
     );
   }, [watch('fullName')]);
 

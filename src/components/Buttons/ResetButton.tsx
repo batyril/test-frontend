@@ -8,7 +8,20 @@ interface IResetButton {
 }
 const ResetButton: FC<IResetButton> = ({ reset }) => {
   return (
-    <button className={styles.reset} onClick={() => reset()} type='reset'>
+    <button
+      className={styles.reset}
+      onClick={() =>
+        reset({
+          clientGroup: 'ОМС',
+          doctor: '',
+          fullName: '',
+          gender: '',
+          telephone: '',
+          date: '',
+          checkbox: false,
+        })
+      }
+    >
       Сбросить{' '}
     </button>
   );
