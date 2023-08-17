@@ -1,11 +1,30 @@
-.form{
-  display: flex;
-  flex-direction: column;
-  gap: 30px
+@import "../../scss/variables";
+
+.addClient{
+  max-width: 800px;
+  background-color: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
 }
 
-.client{
-  padding: 40px;
-  border: 1px solid black;
+.form{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 45px;
+  justify-content: space-around;
+  align-items: center;
+  &__name {
+    font-size: 25px;
+    color: $blue;
+    margin-bottom: 50px;
+  }
+  &__buttons{
+    gap: 35px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
 }
+
 

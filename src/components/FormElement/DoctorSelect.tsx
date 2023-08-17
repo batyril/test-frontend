@@ -17,7 +17,7 @@ const DoctorSelect: FC<IDoctorSelect> = ({ dirtyFields, register }) => {
         }`}
         {...register('doctor', { required: true })}
       >
-        <option value='' disabled></option>
+        <option value=''></option>
         <option value='Петров'>Петров</option>
         <option value='Захаров'>Захаров</option>
         <option value='Черниговская'>Черниговская</option>

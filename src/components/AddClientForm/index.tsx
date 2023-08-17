@@ -7,6 +7,8 @@ import DoctorSelect from '../FormElement/DoctorSelect.tsx';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Form } from '../../const/interfaces.ts';
 import styles from './AddClientForm.module.scss';
+import SubmitButton from '../Buttons/SubmitButton.tsx';
+import ResetButton from '../Buttons/ResetButton.tsx';
 
 const AddClientForm = () => {
   const {
@@ -22,7 +24,7 @@ const AddClientForm = () => {
       fullName: '',
       date: '',
       gender: '',
-      doctor: [],
+      doctor: '',
       clientGroup: [],
     },
   });
@@ -32,8 +34,8 @@ const AddClientForm = () => {
     reset();
   };
   return (
-    <section className={styles.client}>
-      <h2>Форма клиента поликлиники</h2>
+    <section className={styles.addClient}>
+      <h2 className={styles.form__name}>Форма клиента поликлиники</h2>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
         <FullName
           dirtyFields={dirtyFields}
@@ -43,13 +45,12 @@ const AddClientForm = () => {
           setValue={setValue}
         />
 
-        <DateInput register={register} errors={errors} />
-
         <GenderInput
           register={register}
           dirtyFields={dirtyFields}
           errors={errors}
         />
+        <DoctorSelect dirtyFields={dirtyFields} register={register} />
 
         <TelInput
           register={register}
@@ -57,14 +58,14 @@ const AddClientForm = () => {
           errors={errors}
         />
 
+        <DateInput register={register} errors={errors} />
+
         <ClientGroupSelect register={register} />
 
-        <DoctorSelect dirtyFields={dirtyFields} register={register} />
-
-        <button type='reset'>Сбросить </button>
-        <button disabled={!isValid} type='submit'>
-          Создать{' '}
-        </button>
+        <div className={styles.form__buttons}>
+          <ResetButton reset={reset} />
+          <SubmitButton isValid={isValid} />
+        </div>
       </form>
     </section>
   );

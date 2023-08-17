@@ -1,8 +1,7 @@
 .form{
   &__wrapper{
-    width: 350px;
+    width: 40%;
     position: relative;
-
   }
 
   &__title{
@@ -34,7 +33,7 @@
     font-size: 20px;
     position: absolute;
     left: 0;
-    top: 5px;
+    top: 15px;
     color: darkgrey;
     transform-origin: left;
     transition: top .3s, transform .3s, color .3s ;
@@ -42,7 +41,7 @@
 
   &__error{
     font-weight: 300 ;
-    top:35px;
+    top:38px;
     position: absolute;
     text-align: left;
     color: red;

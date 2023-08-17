@@ -18,7 +18,9 @@ const DateInput: FC<IDateInput> = ({ register, errors }) => {
           required: 'Поле обязательное ',
         })}
       />
-      <div>{errors?.date && <p>{errors?.date?.message} </p>}</div>
+      <div className={styles.form__error}>
+        {errors?.date && <p>{errors?.date?.message} </p>}
+      </div>
     </label>
   );
 };
