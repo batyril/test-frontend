@@ -138,7 +138,14 @@
 }
 
 
+@media (max-width: 700px) {
+  .form{
+    &__wrapper{
+      width: 80%;
+    }
+  }
 
+}
 
 
 

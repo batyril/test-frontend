@@ -10,8 +10,11 @@ import styles from './AddClientForm.module.scss';
 import SubmitButton from '../Buttons/SubmitButton.tsx';
 import ResetButton from '../Buttons/ResetButton.tsx';
 import CheckboxSMS from '../FormElement/CheckboxSMS.tsx';
+import { useState } from 'react';
+import Modal from '../Modal';
 
 const AddClientForm = () => {
+  const [active, setActive] = useState(false);
   const {
     register,
     watch,
@@ -33,8 +36,8 @@ const AddClientForm = () => {
     },
   });
 
-  const onSubmit: SubmitHandler<Form> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<Form> = () => {
+    setActive(true);
     reset();
   };
   return (
@@ -72,12 +75,13 @@ const AddClientForm = () => {
 
         <ClientGroupSelect errors={errors} register={register} />
 
-        <div className={styles.form__buttons}>
+        <div onClick={() => setActive(true)} className={styles.form__buttons}>
           <CheckboxSMS register={register} />
           <ResetButton reset={reset} />
           <SubmitButton isValid={isValid} />
         </div>
       </form>
+      <Modal active={active} setActive={setActive} />
     </section>
   );
 };
