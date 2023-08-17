@@ -9,7 +9,7 @@ interface IResetButton {
 const ResetButton: FC<IResetButton> = ({ reset }) => {
   return (
     <button
-      className={styles.reset}
+      className={`${styles.reset} ${styles.button}`}
       onClick={() =>
         reset({
           clientGroup: 'ОМС',

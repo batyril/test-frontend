@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import { requestName } from '../../request.ts';
+import { requestName } from '../../service/request.ts';
 import {
   FieldErrors,
   FieldNamesMarkedBoolean,

@@ -6,7 +6,11 @@ interface ISubmitButton {
 
 const SubmitButton: FC<ISubmitButton> = ({ isValid }) => {
   return (
-    <button className={styles.submit} disabled={!isValid} type='submit'>
+    <button
+      className={`${styles.submit} ${styles.button}`}
+      disabled={!isValid}
+      type='submit'
+    >
       Создать{' '}
     </button>
   );

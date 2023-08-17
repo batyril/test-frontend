@@ -1,4 +1,7 @@
-.submit{
+@import "../../scss/variables";
+
+
+.button{
   cursor: pointer;
   background-color: white;
   display: flex;
@@ -7,15 +10,17 @@
   width: 120px;
   height: 40px;
   border-radius: 10px;
-
-  border: 1px solid rgba(4, 167, 119, 0.8);
+}
+.submit{
+  border: 1px solid  $green;
   transition: background-color .4s, color .4s;
   &:hover{
-    background-color: #04a777;
+    background-color: $green;
     color: white;
   }
   &:active{
-    background-color: rgba(2, 195, 154, 0.77);
+    background-color: $green;
+    opacity: 0.8;
   }
   &:disabled{
     border: 1px solid rgba(128, 128, 128, 0.55);
@@ -27,21 +32,14 @@
 }
 
 .reset{
-  cursor: pointer;
-  background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 120px;
-  height: 40px;
-  border-radius: 10px;
-  border: 1px solid #fe6d73;
+  border: 1px solid $red;
   transition: background-color .4s, color .4s;
   &:hover{
-    background-color: #fe6d73;
+    background-color: $red;
     color: white;
   }
   &:active{
-    background-color: #fe6d73;
+    background-color: $red;
+    opacity: 0.8;
   }
 }

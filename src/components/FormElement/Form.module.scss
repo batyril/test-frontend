@@ -1,6 +1,8 @@
+@import "../../scss/variables";
+
 .form{
   &__wrapper{
-    width: 40%;
+    width: 90%;
     position: relative;
   }
 
@@ -21,7 +23,7 @@
     border-bottom: 1px solid darkgrey;
     transition: border-color .3s ;
     &:focus{
-      border-color:#3d61ef;
+      border-color:$blue;
     }
   }
 
@@ -44,7 +46,7 @@
     top:38px;
     position: absolute;
     text-align: left;
-    color: red;
+    color: $red;
     font-size: 14px;
     &-date{
       top:65px;
@@ -89,7 +91,7 @@
     width: 20px;
     height: 20px;
     border-radius: 3px;
-    border: 1px solid blue;
+    border: 1px solid $blue;
     position: relative;
       display: flex;
     align-items: center;
@@ -112,7 +114,7 @@
   &__helpNameItem{
     list-style-type: none;
     &:hover{
-      color:#3d61ef ;
+      color:$blue ;
     }
   }
 
@@ -120,32 +122,23 @@
   {
     top: -15px;
     transform: scale(.85);
-    color: #3d61ef;
+    color: $blue;
   }
 
   &__wrapper:focus-within &__title
   {
-     color: #3d61ef;
+     color: $blue;
   }
 
   &__input.changed+&__placeholder
   {
     top: -15px;
     transform: scale(.85);
-    color: #3d61ef;
+    color:$blue;
   }
 
 }
 
-
-@media (max-width: 700px) {
-  .form{
-    &__wrapper{
-      width: 80%;
-    }
-  }
-
-}
 
 
 

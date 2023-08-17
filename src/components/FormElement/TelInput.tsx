@@ -6,7 +6,6 @@ import {
 import { FC } from 'react';
 import { Form } from '../../const/interfaces.ts';
 import styles from './Form.module.scss';
-import validateTelephone from '../../utils/validateTelephone.ts';
 
 interface ITelInput {
   register: UseFormRegister<Form>;
@@ -23,9 +22,13 @@ const TelInput: FC<ITelInput> = ({ errors, dirtyFields, register }) => {
         }`}
         {...register('telephone', {
           required: 'Поле обязательное',
-          validate: validateTelephone,
+          pattern: {
+            value: /^7[0-9]{10}$/,
+            message: 'Номер телефона должен начинаться с 7 и содержать 11 цифр',
+          },
+          /*validate: validateTelephone,*/
         })}
-        type='number'
+        type='tel'
       />
       <div className={styles.form__placeholder}>Номер телефона</div>
       <div className={styles.form__error}>
