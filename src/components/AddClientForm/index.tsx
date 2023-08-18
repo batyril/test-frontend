@@ -1,6 +1,6 @@
 import FullName from '../FormElement/FullName.tsx';
 import DateInput from '../FormElement/DateInput.tsx';
-import GenderInput from '../FormElement/GenderInput.tsx';
+import GenderSelect from '../FormElement/GenderSelect.tsx';
 import TelInput from '../FormElement/TelInput.tsx';
 import ClientGroupSelect from '../FormElement/ClientGroupSelect.tsx';
 import DoctorSelect from '../FormElement/DoctorSelect.tsx';
@@ -37,8 +37,9 @@ const AddClientForm = () => {
     defaultValues,
   });
 
-  const onSubmit: SubmitHandler<Form> = () => {
+  const onSubmit: SubmitHandler<Form> = (data) => {
     setActive(true);
+    console.log(data);
     reset({
       clientGroup: 'ОМС',
       doctor: '',
@@ -61,19 +62,6 @@ const AddClientForm = () => {
           setValue={setValue}
         />
 
-        <GenderInput
-          register={register}
-          dirtyFields={dirtyFields}
-          errors={errors}
-        />
-        <DoctorSelect dirtyFields={dirtyFields} register={register} />
-
-        <TelInput
-          register={register}
-          dirtyFields={dirtyFields}
-          errors={errors}
-        />
-
         <DateInput
           watch={watch}
           setError={setError}
@@ -82,7 +70,21 @@ const AddClientForm = () => {
           errors={errors}
         />
 
+        <TelInput
+          register={register}
+          dirtyFields={dirtyFields}
+          errors={errors}
+        />
+
+        <GenderSelect
+          register={register}
+          dirtyFields={dirtyFields}
+          errors={errors}
+        />
+
         <ClientGroupSelect errors={errors} register={register} />
+
+        <DoctorSelect dirtyFields={dirtyFields} register={register} />
 
         <div className={styles.form__buttons}>
           <CheckboxSMS register={register} />

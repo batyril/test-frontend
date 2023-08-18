@@ -12,19 +12,23 @@ interface IGenderInput {
   dirtyFields: Partial<Readonly<FieldNamesMarkedBoolean<Form>>>;
   errors: FieldErrors<Form>;
 }
-const GenderInput: FC<IGenderInput> = ({ dirtyFields, register, errors }) => {
+const GenderSelect: FC<IGenderInput> = ({ dirtyFields, register, errors }) => {
   return (
     <label className={styles.form__wrapper}>
-      <input
+      <select
         className={`${styles.form__input} ${
           dirtyFields.gender ? styles.changed : ''
         }`}
         {...register('gender')}
-      />
+      >
+        <option value='' disabled></option>
+        <option value='Мужской'>Мужской</option>
+        <option value='Женский'>Женский</option>
+      </select>
       <div className={styles.form__placeholder}>Пол</div>
       <div>{errors?.gender && <p>{errors?.gender?.message} </p>}</div>
     </label>
   );
 };
 
-export default GenderInput;
+export default GenderSelect;
