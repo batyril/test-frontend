@@ -13,6 +13,14 @@ import CheckboxSMS from '../FormElement/CheckboxSMS.tsx';
 import { useState } from 'react';
 import Modal from '../Modal';
 
+const defaultValues = {
+  fullName: '',
+  gender: '',
+  doctor: '',
+  clientGroup: 'ОМС',
+  checkbox: false,
+};
+
 const AddClientForm = () => {
   const [active, setActive] = useState(false);
   const {
@@ -20,25 +28,26 @@ const AddClientForm = () => {
     watch,
     setError,
     setValue,
-
     formState: { errors, isValid, dirtyFields },
     handleSubmit,
     reset,
     trigger,
   } = useForm<Form>({
     mode: 'onChange',
-    defaultValues: {
-      fullName: '',
-      gender: '',
-      doctor: '',
-      clientGroup: 'ОМС',
-      checkbox: false,
-    },
+    defaultValues,
   });
 
   const onSubmit: SubmitHandler<Form> = () => {
     setActive(true);
-    reset();
+    reset({
+      clientGroup: 'ОМС',
+      doctor: '',
+      fullName: '',
+      gender: '',
+      telephone: '',
+      date: '',
+      checkbox: false,
+    });
   };
   return (
     <section className={styles.addClient}>
@@ -75,7 +84,7 @@ const AddClientForm = () => {
 
         <ClientGroupSelect errors={errors} register={register} />
 
-        <div onClick={() => setActive(true)} className={styles.form__buttons}>
+        <div className={styles.form__buttons}>
           <CheckboxSMS register={register} />
           <ResetButton reset={reset} />
           <SubmitButton isValid={isValid} />

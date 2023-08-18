@@ -6,6 +6,7 @@ import styles from './Buttons.module.scss';
 interface IResetButton {
   reset: UseFormReset<Form>;
 }
+
 const ResetButton: FC<IResetButton> = ({ reset }) => {
   return (
     <button

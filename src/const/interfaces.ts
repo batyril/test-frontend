@@ -5,7 +5,7 @@ export interface IHelpName {
 
 export interface Form {
   fullName: string;
-  date: '';
+  date: string;
   telephone?: string;
   gender: string;
   clientGroup: string;

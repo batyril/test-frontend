@@ -26,7 +26,6 @@ const TelInput: FC<ITelInput> = ({ errors, dirtyFields, register }) => {
             value: /^7[0-9]{10}$/,
             message: 'Номер телефона должен начинаться с 7 и содержать 11 цифр',
           },
-          /*validate: validateTelephone,*/
         })}
         type='tel'
       />
